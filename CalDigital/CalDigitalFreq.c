@@ -27,11 +27,11 @@ int main()
             printf("we have reached the end of file\n");
         fclose(pFile);
     }
-    printf("Digital   Count\n");
+    printf("STATISTICS:\n");
 
     for (c = 0; c < 10; c++)
     {
-        printf("%c \t %d\n",c + '0', count[c]);
+        printf("The frequency of %c is\t %d\n",c + '0', count[c]);
     }
     return 0;
 }

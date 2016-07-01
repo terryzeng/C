@@ -1,0 +1,26 @@
+SPC : ' '
+EOL : '\n'
+
+states : (before,inside,after,end)
+
+setState(c){
+    if c=EOF then set end
+    if before and (c!=SPC and c!=EOL) then set inside
+    if inside and (c=SPC or c=EOL) then set after
+    if after and c=EOL then set before
+}
+
+doAction(c){
+    if inside then write(c)
+    else if c=EOL then write(c)
+}
+
+cycle{
+    set before
+    loop{
+        c:readCharacter
+        setState(c)
+        doAction(c)
+    }
+    until end
+}
